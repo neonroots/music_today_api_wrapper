@@ -16,7 +16,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'reek', '~> 3.7', '>= 3.7.1'
   s.add_development_dependency 'rubocop', '~> 0.35.1'
   s.add_development_dependency 'spork', '~> 0.9.2'
+  s.add_development_dependency 'vcr', '~> 3.0'
 
   s.add_dependency 'bundler', '>= 1.10.6'
   s.add_dependency 'rake', '>= 10.4.2'
+  s.add_dependency 'json', '~> 1.8', '>= 1.8.3'
 end
