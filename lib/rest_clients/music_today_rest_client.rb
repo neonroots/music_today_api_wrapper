@@ -20,7 +20,6 @@ module MusicTodayApiWrapper
         res = Net::HTTP.get_response(uri)
         @common_response.data[:products] = JSON.parse(res.body)['products']
       end
-      @common_response
     end
   end
 end

@@ -9,4 +9,9 @@ module MusicTodayApiWrapper
     self.configuration ||= Configuration.new
     yield(configuration)
   end
+
+  def self.products
+    product_services = ProductServices.new
+    product_services.all_products
+  end
 end

@@ -8,8 +8,10 @@ class CommonResponse
 
   def work
     yield
+    self
   rescue StandardError => error
     @errors.push(error.message)
+    self
   end
 
   def success?
