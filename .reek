@@ -29,7 +29,8 @@ IrresponsibleModule:
   exclude: []
 LongParameterList:
   enabled: true
-  exclude: []
+  exclude:
+    - 'MusicTodayApiWrapper::Resources::Product#initialize'
   max_params: 3
   overrides:
     initialize:
