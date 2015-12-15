@@ -1,4 +1,4 @@
-require './lib/resources/image'
+require 'resources/image'
 
 class Product
   attr_accessor :name, :description, :category, :image

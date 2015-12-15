@@ -1,7 +1,7 @@
 require 'json'
 require 'net/http'
-require './lib/rest_clients/common_response'
-require './lib/support/configuration'
+require 'rest_clients/common_response'
+require 'support/configuration'
 
 module MusicTodayApiWrapper
   class RestClient

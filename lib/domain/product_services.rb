@@ -1,5 +1,5 @@
-require './lib/rest_clients/music_today_rest_client'
-require './lib/resources/product'
+require 'rest_clients/music_today_rest_client'
+require 'resources/product'
 
 module MusicTodayApiWrapper
   class ProductServices

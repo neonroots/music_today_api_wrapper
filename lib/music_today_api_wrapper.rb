@@ -1,4 +1,5 @@
 require 'support/configuration'
+require 'domain/product_services'
 
 module MusicTodayApiWrapper
   class << self
