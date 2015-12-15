@@ -1,10 +1,10 @@
 require 'rest_clients/music_today_rest_client'
 require 'resources/product'
 
-module MusicTodayApiWrapper
+module MusicTodayApiWrapper::Domain
   class ProductServices
     def initialize
-      @common_response = CommonResponse.new
+      @common_response = MusicTodayApiWrapper::RestClients::CommonResponse.new
       @common_response.data[:products] = []
       @rest_client = MusicTodayApiWrapper::RestClient.new
     end
@@ -21,7 +21,8 @@ module MusicTodayApiWrapper
     private
 
     def product_mapper(product)
-      product_obj = Product.from_hash(product)
+      product_obj =
+        MusicTodayApiWrapper::Resources::Product.from_hash(product)
       @common_response.data[:products] << product_obj
     end
   end

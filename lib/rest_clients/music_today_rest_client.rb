@@ -10,7 +10,7 @@ module MusicTodayApiWrapper
       @url = config.url
       @user = config.user
       @api_key = config.api_key
-      @common_response = CommonResponse.new
+      @common_response = MusicTodayApiWrapper::RestClients::CommonResponse.new
     end
 
     def all_products

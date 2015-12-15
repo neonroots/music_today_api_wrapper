@@ -12,7 +12,7 @@ module MusicTodayApiWrapper
   end
 
   def self.products
-    product_services = ProductServices.new
+    product_services = Domain::ProductServices.new
     product_services.all_products
   end
 end

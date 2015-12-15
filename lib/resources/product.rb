@@ -1,21 +1,24 @@
 require 'resources/image'
 
-class Product
-  attr_accessor :name, :description, :category, :image
+module MusicTodayApiWrapper::Resources
+  class Product
+    attr_accessor :name, :description, :category, :image
 
-  def initialize(name, description, category, image = Image.new)
-    @name = name
-    @description = description
-    @category = category
-    @image = image
-  end
+    def initialize(name, description, category,
+      image = MusicTodayApiWrapper::Resources::Image.new)
+      @name = name
+      @description = description
+      @category = category
+      @image = image
+    end
 
-  def self.from_hash(product_hash)
-    image = Image.new(product_hash['imageUrlSmall'],
-                      product_hash['imageUrlMedium'],
-                      product_hash['imageUrlLarge'])
+    def self.from_hash(product_hash)
+      image = Image.new(product_hash['imageUrlSmall'],
+                        product_hash['imageUrlMedium'],
+                        product_hash['imageUrlLarge'])
 
-    Product.new(product_hash['name'], product_hash['lang']['en']['textDesc'],
-      product_hash['categoryName'], image)
+      Product.new(product_hash['name'], product_hash['lang']['en']['textDesc'],
+        product_hash['categoryName'], image)
+    end
   end
 end

@@ -9,7 +9,7 @@ describe 'check Music Today rest cliente features' do
   it 'should return product list json' do
     VCR.use_cassette("get_products") do
       common_response = @music_today_rest_client.all_products
-      expect(common_response.class).to eq(CommonResponse)
+      expect(common_response.class).to eq(MusicTodayApiWrapper::RestClients::CommonResponse)
       expect(common_response.data[:products].class).to eq(Array)
       expect(
         common_response.data[:products][0]['name']
