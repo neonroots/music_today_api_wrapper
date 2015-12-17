@@ -7,7 +7,7 @@ describe 'test the entire gem' do
       response = MusicTodayApiWrapper.products
       expect(response.class).to eq(MusicTodayApiWrapper::RestClients::CommonResponse)
       expect(response.success?).to eq(true)
-      expect(response.data[:products].length).to eq(9)
+      expect(response.data[:products].length).to eq(69)
       expect(response.data[:products][0].class).to eq(MusicTodayApiWrapper::Resources::Product)
       expect(response.data[:products][0].image.class).to eq(MusicTodayApiWrapper::Resources::Image)
       expect(response.data[:products][0].name).to eq('DMB Live Trax Vol. 35: Post-Gazette Pavilion')
@@ -17,7 +17,7 @@ describe 'test the entire gem' do
 
   it 'should return a product data' do
     VCR.use_cassette("get_product") do
-      response = MusicTodayApiWrapper.find_product('DMDD132')
+      response = MusicTodayApiWrapper.find_product('DMDD132', 'DMDD132FL15')
       expect(response.class).to eq(MusicTodayApiWrapper::RestClients::CommonResponse)
       expect(response.success?).to eq(true)
       expect(response.data[:product].class).to eq(MusicTodayApiWrapper::Resources::Product)
