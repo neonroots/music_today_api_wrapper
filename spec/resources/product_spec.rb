@@ -4,6 +4,7 @@ require './lib/resources/product'
 describe 'check Product structure' do
   it 'intialized works correctly' do
     product = MusicTodayApiWrapper::Resources::Product.new('80',
+                                                           '25',
                                                            'product-name',
                                                            'product-description',
                                                            'product-category',

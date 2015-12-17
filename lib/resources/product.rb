@@ -3,12 +3,19 @@ require 'resources/image'
 module MusicTodayApiWrapper
   module Resources
     class Product
-      attr_accessor :uid, :name, :description, :category, :image, :price
+      attr_accessor :uid,
+                    :parent_id,
+                    :name,
+                    :description,
+                    :category,
+                    :image,
+                    :price
 
       # rubocop:disable ParameterLists
-      def initialize(uid, name, description, category, price,
+      def initialize(uid, parent_id, name, description, category, price,
         image = MusicTodayApiWrapper::Resources::Image.new)
         @uid = uid
+        @parent_id = parent_id
         @name = name
         @description = description
         @category = category
@@ -16,16 +23,24 @@ module MusicTodayApiWrapper
         @image = image
       end
 
-      def self.from_hash(product_hash)
-        image = Image.new(product_hash['imageUrlSmall'],
-                          product_hash['imageUrlMedium'],
-                          product_hash['imageUrlLarge'])
+      def self.from_hash(product)
+        image = Image.new(product['imageUrlSmall'],
+                          product['imageUrlMedium'],
+                          product['imageUrlLarge'])
+        variants = []
+        product['variants'].each do |variant|
+          variants << variant_from_hash(product, variant, image)
+        end
+        variants
+      end
 
-        Product.new(product_hash['id'],
+      def self.variant_from_hash(product_hash, variant_hash, image)
+        Product.new(variant_hash['sku'],
+                    product_hash['id'],
                     product_hash['name'],
                     product_hash['lang']['en']['textDesc'],
                     product_hash['categoryName'],
-                    product_hash['listPrice'],
+                    variant_hash['listPrice'],
                     image)
       end
     end
