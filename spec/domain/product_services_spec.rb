@@ -12,7 +12,7 @@ describe 'Test project services features' do
       response = @product_services.all_products
       expect(response.class).to eq(MusicTodayApiWrapper::RestClients::CommonResponse)
       expect(response.success?).to eq(true)
-      expect(response.data[:products].length).to eq(9)
+      expect(response.data[:products].length).to eq(69)
       expect(response.data[:products][0].class).to eq(MusicTodayApiWrapper::Resources::Product)
       expect(response.data[:products][0].image.class).to eq(MusicTodayApiWrapper::Resources::Image)
       expect(response.data[:products][0].name).to eq('DMB Live Trax Vol. 35: Post-Gazette Pavilion')
@@ -22,7 +22,7 @@ describe 'Test project services features' do
 
   it 'should return product data' do
     VCR.use_cassette("get_product") do
-      response = @product_services.find_product('DMDD132')
+      response = @product_services.find_product('DMDD132', 'DMCD123')
       expect(response.class).to eq(MusicTodayApiWrapper::RestClients::CommonResponse)
       expect(response.success?).to eq(true)
       expect(response.data[:product].class).to eq(MusicTodayApiWrapper::Resources::Product)

@@ -2,6 +2,7 @@ require 'rspec'
 require './lib/music_today_api_wrapper'
 require 'dotenv'
 require 'vcr'
+require 'byebug'
 
 RSpec.configure do |config|
   config.before :all do
