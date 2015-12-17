@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop', '~> 0.35.1'
   s.add_development_dependency 'spork', '~> 0.9.2'
   s.add_development_dependency 'vcr', '~> 3.0'
+  s.add_development_dependency 'webmock', '~> 1.22'
 
   s.add_dependency 'bundler', '>= 1.10.6'
   s.add_dependency 'rake', '>= 10.4.2'
