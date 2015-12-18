@@ -17,9 +17,9 @@ module MusicTodayApiWrapper
     product_services.all_products
   end
 
-  def self.find_product(parent_id, id)
+  def self.find_product(id)
     product_services = Services::ProductServices.new
-    product_services.find_product(parent_id, id)
+    product_services.find_product(id)
   end
 
   def self.shipping_options(address, items)

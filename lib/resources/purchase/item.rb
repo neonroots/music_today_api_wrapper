@@ -1,19 +1,19 @@
-require 'resources/product'
+require 'resources/variant'
 module MusicTodayApiWrapper
   module Resources
     module Purchase
       class Item
-        attr_accessor :product, :quantity
+        attr_accessor :variant, :quantity
 
-        def initialize(product = Product.new, quantity = 1)
-          @product = product
+        def initialize(variant = Variant.new, quantity = 1)
+          @variant = variant
           @quantity = quantity
         end
 
         def as_hash
-          { sku: @product.uid,
+          { sku: @variant.sku,
             qty: @quantity,
-            price: @product.price }
+            price: @variant.price }
         end
       end
     end

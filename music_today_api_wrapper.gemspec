@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'music_today_api_wrapper'
-  s.version     = '18.12.15.02'
+  s.version     = '18.12.15.03'
   s.date        = '2015-12-18'
   s.summary     = 'Gem to expose music today api endpoints.'
   s.description = 'Gem to expose music today api endpoints.'

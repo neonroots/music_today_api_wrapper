@@ -1,47 +1,46 @@
 require 'resources/image'
+require 'resources/variant'
 
 module MusicTodayApiWrapper
   module Resources
     class Product
       attr_accessor :uid,
-                    :parent_id,
                     :name,
                     :description,
                     :category,
                     :image,
-                    :price
+                    :price,
+                    :variants
 
       # rubocop:disable ParameterLists
-      def initialize(uid, parent_id, name, description, category, price,
-        image = MusicTodayApiWrapper::Resources::Image.new)
+      def initialize(uid, name, description, category, price,
+        image = MusicTodayApiWrapper::Resources::Image.new, variants = [])
         @uid = uid
-        @parent_id = parent_id
         @name = name
         @description = description
         @category = category
         @price = price
         @image = image
+        @variants = variants
       end
 
-      def self.from_hash(product)
-        image = Image.new(product['imageUrlSmall'],
-                          product['imageUrlMedium'],
-                          product['imageUrlLarge'])
-        variants = []
-        product['variants'].each do |variant|
-          variants << variant_from_hash(product, variant, image)
+      # rubocop:disable AbcSize
+      def self.from_hash(hash)
+        image = Image.new(hash['imageUrlSmall'],
+                          hash['imageUrlMedium'],
+                          hash['imageUrlLarge'])
+
+        product = Product.new(hash['id'],
+                              hash['name'],
+                              hash['lang']['en']['textDesc'],
+                              hash['categoryName'],
+                              hash['listPrice'],
+                              image)
+
+        hash['variants'].each do |variant|
+          product.variants << Variant.from_hash(variant)
         end
-        variants
-      end
-
-      def self.variant_from_hash(product_hash, variant_hash, image)
-        Product.new(variant_hash['sku'],
-                    product_hash['id'],
-                    product_hash['name'],
-                    product_hash['lang']['en']['textDesc'],
-                    product_hash['categoryName'],
-                    variant_hash['listPrice'],
-                    image)
+        product
       end
     end
   end
