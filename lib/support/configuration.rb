@@ -1,5 +1,3 @@
-require 'dotenv'
-
 module MusicTodayApiWrapper
   class Configuration
     attr_accessor :user, :api_key, :url, :catalog
