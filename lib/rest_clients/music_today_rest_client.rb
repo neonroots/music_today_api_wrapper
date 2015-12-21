@@ -16,10 +16,14 @@ module MusicTodayApiWrapper
       @common_response = MusicTodayApiWrapper::RestClients::CommonResponse.new
     end
 
-    def all_products
+    def all_products(per_page = nil, page_number = nil)
       @common_response.work do
+        options = {}
+        options[:size] = per_page if per_page
+        options[:page] = page_number if page_number
+
         url = "#{@url}/catalog/content/#{@catalog_number}/"
-        @common_response.data[:products] = get(url)['products']
+        @common_response.data[:products] = get(url, options)['products']
       end
     end
 

@@ -7,7 +7,6 @@ module MusicTodayApiWrapper
                     :quantity_available,
                     :variant_names
 
-      # rubocop:disable ParameterLists
       def initialize(sku, price, quantity_available, variant_names = [])
         @sku = sku
         @price = price
@@ -16,7 +15,6 @@ module MusicTodayApiWrapper
       end
 
       def self.from_hash(variant_hash)
-        size, format, bitrate = nil
         variant_names = []
 
         variant_hash['variantNames'].each do |variant|

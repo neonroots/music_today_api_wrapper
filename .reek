@@ -32,7 +32,6 @@ LongParameterList:
   exclude:
     - 'MusicTodayApiWrapper::Resources::Product#initialize'
     - 'MusicTodayApiWrapper::Resources::Address#initialize'
-    - 'MusicTodayApiWrapper::Resources::Variant#initialize'
   max_params: 3
   overrides:
     initialize:
@@ -70,6 +69,7 @@ TooManyStatements:
   - MusicTodayApiWrapper::RestClient#post
   - MusicTodayApiWrapper::Services::ShippingServices#options
   - MusicTodayApiWrapper::Resources::Variant#self.from_hash
+  - MusicTodayApiWrapper::RestClient#all_products
   max_statements: 5
 UncommunicativeMethodName:
   enabled: true
