@@ -57,8 +57,8 @@ describe 'test the entire gem' do
       item = MusicTodayApiWrapper::Resources::Purchase::Item.new(variant, 2)
       response = MusicTodayApiWrapper.shipping_options(address, [item])
       expect(response.data[:shipping_options][0].type).to eq('EXPEDITED')
-      expect(response.data[:shipping_options][0].rate).to eq(6.29)
-      expect(response.data[:shipping_options][0].description).to eq('Standard (Ships in time for Christmas delivery)')
+      expect(response.data[:shipping_options][0].rate).to eq(14.11)
+      expect(response.data[:shipping_options][0].description).to eq('Expedited (Ships in time for Christmas delivery!)')
     end
   end
 end

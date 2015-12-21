@@ -54,9 +54,8 @@ describe 'Test project services features' do
       expect(variant.sku).to eq('DMCD123')
       expect(variant.price).to eq(15.99)
       expect(variant.quantity_available).to eq(99999)
-      expect(variant.size).to eq(nil)
-      expect(variant.format).to eq('CD')
-      expect(variant.bitrate).to eq('16 bit')
+      expect(variant.variant_names[0][:format]).to eq('CD')
+      expect(variant.variant_names[1][:bitrate]).to eq('16 bit')
     end
   end
 end

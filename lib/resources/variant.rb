@@ -1,43 +1,34 @@
+require 'facets'
 module MusicTodayApiWrapper
   module Resources
     class Variant
       attr_accessor :sku,
                     :price,
                     :quantity_available,
-                    :size,
-                    :format,
-                    :bitrate
+                    :variant_names
 
       # rubocop:disable ParameterLists
-      def initialize(sku, price, quantity_available, size = nil, format = nil,
-        bitrate = nil)
+      def initialize(sku, price, quantity_available, variant_names = [])
         @sku = sku
         @price = price
         @quantity_available = quantity_available
-        @size = size
-        @format = format
-        @bitrate = bitrate
+        @variant_names = variant_names
       end
 
       def self.from_hash(variant_hash)
         size, format, bitrate = nil
+        variant_names = []
 
-        variant_hash['variantNames'].each do |name|
-          variant_size = name['Size']
-          variant_format = name['Format']
-          variant_bitrate = name['Bitrate']
-
-          size = variant_size if variant_size
-          format = variant_format if variant_format
-          bitrate = variant_bitrate if variant_bitrate
+        variant_hash['variantNames'].each do |variant|
+          variant_name = {}
+          variant_name[variant.keys[0].snakecase.to_sym] = variant.values[0]
+          variant_names << variant_name
         end
 
         Variant.new(variant_hash['sku'],
                     variant_hash['listPrice'],
                     variant_hash['qtyAvailable'],
-                    size,
-                    format,
-                    bitrate)
+                    variant_names)
       end
     end
   end
