@@ -4,7 +4,6 @@ require './lib/resources/product'
 describe 'check Product structure' do
   it 'intialized works correctly' do
     product = MusicTodayApiWrapper::Resources::Product.new('80',
-                                                           '25',
                                                            'product-name',
                                                            'product-description',
                                                            'product-category',
@@ -15,5 +14,6 @@ describe 'check Product structure' do
     expect(product.category).to eq('product-category')
     expect(product.image.class).to eq(MusicTodayApiWrapper::Resources::Image)
     expect(product.price).to eq(13.5)
+    expect(product.variants.class).to eq(Array)
   end
 end

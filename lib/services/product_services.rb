@@ -20,26 +20,23 @@ module MusicTodayApiWrapper
         end
       end
 
-      def find_product(parent_id, id)
-        results = @rest_client.find_product(parent_id)
+      def find_product(id)
+        results = @rest_client.find_product(id)
         return results unless results.success?
 
         @common_response.work do
-          find_variant(id, results.data[:product])
+          @common_response.data[:product] =
+            MusicTodayApiWrapper::Resources::Product
+            .from_hash(results.data[:product])
         end
       end
 
       private
 
       def product_mapper(product)
-        @common_response.data[:products] +=
-          Resources::Product.from_hash(product)
-      end
-
-      def find_variant(id, product_and_variants)
-        products = Resources::Product.from_hash(product_and_variants)
-        @common_response.data[:product] =
-          products.find { |product| product.uid == id }
+        product_obj =
+          MusicTodayApiWrapper::Resources::Product.from_hash(product)
+        @common_response.data[:products] << product_obj
       end
     end
   end

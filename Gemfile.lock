@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    music_today_api_wrapper (16.12.15.03)
+    music_today_api_wrapper (18.12.15.03)
       bundler (>= 1.10.6)
+      facets (~> 3.0)
       json (~> 1.8, >= 1.8.3)
       rake (>= 10.4.2)
 
@@ -36,6 +37,7 @@ GEM
     diff-lcs (1.2.5)
     dotenv (2.0.2)
     equalizer (0.0.11)
+    facets (3.0.0)
     hashdiff (0.2.3)
     ice_nine (0.11.1)
     json (1.8.3)
