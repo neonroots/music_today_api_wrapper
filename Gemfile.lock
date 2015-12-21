@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    music_today_api_wrapper (18.12.15.03)
+    music_today_api_wrapper (21.12.15.01)
       bundler (>= 1.10.6)
       facets (~> 3.0)
       json (~> 1.8, >= 1.8.3)
