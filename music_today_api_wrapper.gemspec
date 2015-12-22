@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'music_today_api_wrapper'
-  s.version     = '22.12.15.01'
+  s.version     = '22.12.15.02'
   s.date        = '2015-12-22'
   s.summary     = 'Gem to expose music today api endpoints.'
   s.description = 'Gem to expose music today api endpoints.'
@@ -22,5 +22,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'bundler', '>= 1.10.6'
   s.add_dependency 'rake', '>= 10.4.2'
   s.add_dependency 'json', '~> 1.8', '>= 1.8.3'
-  s.add_dependency 'facets', '~> 3.0', require: false
 end
