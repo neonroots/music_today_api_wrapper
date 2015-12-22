@@ -42,6 +42,13 @@ module MusicTodayApiWrapper
       end
     end
 
+    def checkout(params)
+      @common_response.work do
+        url = "#{@url}/"
+        @common_response.data[:checkout] = post(url, {}, params)
+      end
+    end
+
     private
 
     def get(url, options = {})

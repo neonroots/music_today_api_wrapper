@@ -17,6 +17,11 @@ module MusicTodayApiWrapper
                              option['totalRate'],
                              option['shippingOptionName'])
         end
+
+        def as_hash
+          { shippingOptionType: @type, deliveryDate: @delivery_date,
+            totalRate: @rate, shippingOptionName: @description }
+        end
       end
     end
   end
