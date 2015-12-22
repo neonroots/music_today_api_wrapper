@@ -5,10 +5,9 @@ module MusicTodayApiWrapper
   module Services
     class ShippingServices
       def initialize
-        @common_response =
-          MusicTodayApiWrapper::RestClients::CommonResponse.new
+        @common_response = RestClients::CommonResponse.new
         @common_response.data[:shipping_options] = []
-        @rest_client = MusicTodayApiWrapper::RestClient.new
+        @rest_client = RestClient.new
       end
 
       def options(address, items)

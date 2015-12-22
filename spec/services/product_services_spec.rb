@@ -1,6 +1,5 @@
 require 'spec_helper'
 require './lib/services/product_services'
-require 'byebug'
 
 describe 'Test project services features' do
   before do
