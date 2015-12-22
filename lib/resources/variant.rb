@@ -19,7 +19,9 @@ module MusicTodayApiWrapper
 
         variant_hash['variantNames'].each do |variant|
           variant_name = {}
-          variant_name[variant.keys[0].to_underscore.to_sym] = variant.values[0]
+          variant_name[variant.keys[0]
+            .to_underscore
+            .to_sym] = variant.values[0]
           variant_names << variant_name
         end
 
