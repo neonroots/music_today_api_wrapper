@@ -24,7 +24,7 @@ module MusicTodayApiWrapper
             total: @total }.compact
         end
 
-        def from_hash(item_hash)
+        def self.from_hash(item_hash)
           variant = Variant.from_hash(item_hash)
           Item.new(variant, item_hash['quantity'], item_hash['tax'],
             item_hash['total'])

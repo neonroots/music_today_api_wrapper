@@ -1,4 +1,5 @@
 require 'resources/address'
+require 'resources/purchase/item'
 
 module MusicTodayApiWrapper
   module Resources
@@ -6,17 +7,17 @@ module MusicTodayApiWrapper
       class Session
         attr_accessor :id, :address, :items
 
-        def initialize(id, address = Address.new, items= [])
+        def initialize(id, address, items = [])
           @id = id
           @address = address
           @items = items
         end
 
-        def from_hash(session_hash)
-          session = Session.new(session_hash['sessionId'])
-          session.address = Address.from_hash(session_hash['addresses'][0])
+        def self.from_hash(session_hash)
+          address = Address.from_hash(session_hash)
+          session = Session.new(session_hash['sessionId'], address)
           session_hash['items'].each do |item|
-            session.items << Item.from_hash(item)
+            session.items << Resources::Purchase::Item.from_hash(item)
           end
           session
         end

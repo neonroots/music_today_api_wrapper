@@ -1,7 +1,8 @@
 module MusicTodayApiWrapper
+  # rubocop:disable ClassAndModuleChildren
   class ::Hash
     def compact
-      self.select { |_, value| !value.nil? }
+      select { |_, value| !value.nil? }
     end
   end
 end

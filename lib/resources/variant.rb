@@ -15,20 +15,24 @@ module MusicTodayApiWrapper
       end
 
       def self.from_hash(variant_hash)
-        variant_names = []
+        Variant.new(variant_hash['sku'],
+                    variant_hash['listPrice'],
+                    variant_hash['qtyAvailable'],
+                    variant_names(variant_hash['variantNames']))
+      end
 
-        variant_hash['variantNames'].each do |variant|
+      def self.variant_names(names)
+        return [] unless names
+        symbolized_names = []
+
+        names.each do |variant|
           variant_name = {}
           variant_name[variant.keys[0]
             .to_underscore
             .to_sym] = variant.values[0]
-          variant_names << variant_name
+          symbolized_names << variant_name
         end
-
-        Variant.new(variant_hash['sku'],
-                    variant_hash['listPrice'],
-                    variant_hash['qtyAvailable'],
-                    variant_names)
+        symbolized_names
       end
     end
   end

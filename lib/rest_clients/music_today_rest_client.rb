@@ -45,7 +45,8 @@ module MusicTodayApiWrapper
     def checkout(params)
       @common_response.work do
         url = "#{@url}/cart/pricing"
-        @common_response.data[:checkout] = post(url, {}, params)
+        @common_response.data[:session] =
+          post(url, {}, params)['addresses'].first
       end
     end
 
@@ -63,7 +64,6 @@ module MusicTodayApiWrapper
       hit(uri, options) do
         request = Net::HTTP::Post.new(uri)
         request.body = body.to_json
-        debugger
         request.content_type = 'application/json'
         Net::HTTP.start(uri.hostname) { |http| http.request(request) }
       end

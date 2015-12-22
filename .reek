@@ -70,6 +70,8 @@ TooManyStatements:
   - MusicTodayApiWrapper::Services::ShippingServices#options
   - MusicTodayApiWrapper::Resources::Variant#self.from_hash
   - MusicTodayApiWrapper::RestClient#all_products
+  - MusicTodayApiWrapper::Resources::Variant#self.variant_names
+  - MusicTodayApiWrapper::Services::CheckoutServices#checkout
   max_statements: 5
 UncommunicativeMethodName:
   enabled: true

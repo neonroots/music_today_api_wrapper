@@ -100,9 +100,11 @@ describe 'test the entire gem' do
         MusicTodayApiWrapper::Resources::Variant.new('DMAM539',100, 14.5)
 
       item = MusicTodayApiWrapper::Resources::Purchase::Item.new(variant)
-
       response = MusicTodayApiWrapper.checkout(address, [item])
-      debugger
+      expect(response.class).to eq(MusicTodayApiWrapper::RestClients::CommonResponse)
+      expect(response.success?).to eq(true)
+      expect(response.data[:session].class).to eq(MusicTodayApiWrapper::Resources::Checkout::Session)
+      expect(response.data[:session].id).to eq('03b501ca-f0a7-4733-958a-e3402082e851')
     end
   end
 end

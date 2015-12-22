@@ -1,4 +1,5 @@
 module MusicTodayApiWrapper
+  # rubocop:disable ClassAndModuleChildren
   class ::String
     def to_underscore!
       gsub!(/(.)([A-Z])/, '\1_\2')
