@@ -1,4 +1,5 @@
 require 'resources/purchase/shipping_option'
+require 'resources/hash'
 
 module MusicTodayApiWrapper
   module Resources
@@ -8,11 +9,13 @@ module MusicTodayApiWrapper
                     :city,
                     :postal_code,
                     :country,
-                    :shipping_options
+                    :shipping_options,
+                    :selected_shipping
 
       # rubocop:disable ParameterLists
       def initialize(street, state, city, postal_code, country = 'US',
-        street_second_line = nil, shipping_options = [])
+        street_second_line = '', shipping_options = [],
+        selected_shipping = nil)
         @street = street
         @state = state
         @street_second_line = street_second_line
@@ -20,6 +23,7 @@ module MusicTodayApiWrapper
         @postal_code = postal_code
         @country = country
         @shipping_options = shipping_options
+        @selected_shipping = selected_shipping
       end
 
       def self.from_hash(address_hash)
@@ -36,7 +40,8 @@ module MusicTodayApiWrapper
           state: @state,
           city: @city,
           postalCode: @postal_code,
-          country: @country }
+          country: @country,
+          shippingOptionType: @selected_shipping }.compact
       end
     end
   end

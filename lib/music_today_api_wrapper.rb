@@ -1,6 +1,7 @@
 require 'support/configuration'
 require 'services/product_services'
 require 'services/shipping_services'
+require 'services/checkout_services'
 
 module MusicTodayApiWrapper
   class << self
@@ -25,5 +26,10 @@ module MusicTodayApiWrapper
   def self.shipping_options(address, items)
     shipping_services = Services::ShippingServices.new
     shipping_services.options(address, items)
+  end
+
+  def self.checkout(address, items)
+    checkout_services = Services::CheckoutServices.new
+    checkout_services.checkout(address, items)
   end
 end

@@ -85,7 +85,24 @@ describe 'test the entire gem' do
       response = MusicTodayApiWrapper.shipping_options(address, [item])
       expect(response.data[:shipping_options][0].type).to eq('EXPEDITED')
       expect(response.data[:shipping_options][0].rate).to eq(14.11)
-      expect(response.data[:shipping_options][0].description).to eq('Expedited (Ships in time for Christmas delivery!)')
+      expect(response.data[:shipping_options][0].description).to eq('Expedited (3-7 business days; Not guaranteed for Christmas delivery.)')
+    end
+  end
+
+  it 'should return a checkout session with right data' do
+    VCR.use_cassette('post_cart_pricing') do
+      address =
+        MusicTodayApiWrapper::Resources::Address.new('2 Lexington Avenue',
+                                                     'Crozet',
+                                                     'VA',
+                                                     '22932')
+      variant =
+        MusicTodayApiWrapper::Resources::Variant.new('DMAM539',100, 14.5)
+
+      item = MusicTodayApiWrapper::Resources::Purchase::Item.new(variant)
+
+      response = MusicTodayApiWrapper.checkout(address, [item])
+      debugger
     end
   end
 end

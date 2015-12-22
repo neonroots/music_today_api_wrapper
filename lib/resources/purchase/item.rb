@@ -1,4 +1,6 @@
 require 'resources/variant'
+require 'resources/hash'
+
 module MusicTodayApiWrapper
   module Resources
     module Purchase
@@ -16,9 +18,10 @@ module MusicTodayApiWrapper
         def as_hash
           { sku: @variant.sku,
             qty: @quantity,
+            quantity: @quantity,
             price: @variant.price,
             tax: @tax,
-            total: @total }
+            total: @total }.compact
         end
 
         def from_hash(item_hash)
