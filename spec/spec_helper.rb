@@ -5,8 +5,9 @@ require 'vcr'
 require 'byebug'
 
 RSpec.configure do |config|
-  config.before :all do
+  config.before :each do
     Dotenv.load
+    ENV['MUSIC_TODAY_DEPARTMENT_NAME'] = nil
   end
 end
 

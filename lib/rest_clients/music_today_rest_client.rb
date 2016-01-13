@@ -13,6 +13,7 @@ module MusicTodayApiWrapper
       @user = config.user
       @api_key = config.api_key
       @catalog_number = config.catalog.to_i
+      @department = config.department
       @common_response = MusicTodayApiWrapper::RestClients::CommonResponse.new
     end
 
@@ -21,8 +22,9 @@ module MusicTodayApiWrapper
         options = {}
         options[:size] = per_page if per_page
         options[:page] = page_number if page_number
+        department = @department ? "/#{@department}" : ''
 
-        url = "#{@url}/catalog/content/#{@catalog_number}/"
+        url = "#{@url}/catalog/content/#{@catalog_number}#{department}/"
         @common_response.data[:products] = get(url, options)['products']
       end
     end
