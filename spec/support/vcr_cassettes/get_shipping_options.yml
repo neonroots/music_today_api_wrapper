@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://stores.staging.musictoday.com/api/0.4/order/shippingOptionsGet?apikey=example_api_key&apiuser=example
+    body:
+      encoding: UTF-8
+      string: '{"storeId":12,"address":{"street":"5391 Three Notched Road","street2":"","city":"Crozet","state":"VA","postalCode":"22932","country":"US"},"lineItems":[{"sku":"AAA002SLBK","qty":1,"price":24.99}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - stores.staging.musictoday.com
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 28 Jan 2016 15:20:04 GMT
+      Server:
+      - Wildfly 8
+      X-Powered-By:
+      - Undertow 1
+      Content-Type:
+      - application/json;charset=UTF-8
+      X-Wildfly-Host:
+      - 02q
+      Set-Cookie:
+      - Coyote-2-1603010a=3e04010a:0; path=/
+      - JSESSIONID=pavINSa0yI3taPKvg9MqwUR0.sms-mgr02q; path=/store-api-0.4
+      P3p:
+      - CP="NOI ADM DEV PSAi COM NAV OUR OTR STP IND DEM"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      X-Apache-Host:
+      - 02p
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '74'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[],"shippingOptions":[{"shippingOptionType":"STANDARD","deliveryDate":null,"totalRate":6.29,"shippingOptionName":"Standard (5-9 business days)"},{"shippingOptionType":"EXPEDITED","deliveryDate":null,"totalRate":14.11,"shippingOptionName":"Expedited (3-7 business days)"},{"shippingOptionType":"2DAY","deliveryDate":"2016-02-01T00:00:00","totalRate":20.5,"shippingOptionName":"2 business days"},{"shippingOptionType":"1DAY","deliveryDate":"2016-01-29T00:00:00","totalRate":27.02,"shippingOptionName":"1 business day"}]}'
+    http_version:
+  recorded_at: Thu, 28 Jan 2016 15:19:59 GMT
+recorded_with: VCR 3.0.1

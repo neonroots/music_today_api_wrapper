@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://stores.staging.musictoday.com/api/0.4/catalog/content/12/?apikey=example_api_key&apiuser=example&size=1000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - stores.staging.musictoday.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 28 Jan 2016 14:19:50 GMT
+      Server:
+      - Wildfly 8
+      X-Powered-By:
+      - Undertow 1
+      Content-Type:
+      - application/json;charset=UTF-8
+      X-Wildfly-Host:
+      - 02q
+      Set-Cookie:
+      - Coyote-2-1603010a=0003010a:0; path=/
+      - JSESSIONID=WzZsgYBi87uINZw2jvF-HdHh.sms-mgr02q; path=/store-api-0.4
+      P3p:
+      - CP="NOI ADM DEV PSAi COM NAV OUR OTR STP IND DEM"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      X-Apache-Host:
+      - 04p
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '74'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"timestamp":"2016-01-28T14:06:30Z","catalogName":null,"catalogPath":"","numProducts":3,"catalogType":null,"pageSize":1000,"pageNumber":1,"products":[{"imageUrlSmall":"http://static.musictoday.com/store/bands/12/product_small/AAA001.JPG","imageUrlLarge":"http://static.musictoday.com/store/bands/12/product_large/AAA001.JPG","lastUpdated":"2016-01-27T20:05:00Z","imageUrl50x50":"http://static.musictoday.com/store/bands/12/product_50/AAA001.JPG","lang":{"en":{"textDesc":"Merry Jane Culture T-Shirt - Black\n\nPlease note: This item is available for pre-order.\nYour entire order will ship in mid-January 2016.\n \n ","longDesc":"","shortDesc":"Merry Jane Culture T-Shirt - Black\n<br /><br />\n<b>Please note: This item is available for pre-order.</b><br />\nYour entire order will ship in mid-January 2016.\n<br /><br />"}},"id":"AAA001","categoryName":"T-Shirts","imageUrlMedium":"http://static.musictoday.com/store/bands/12/product_medium/AAA001.JPG","imageUrl205x205":"http://static.musictoday.com/store/bands/12/product_205/AAA001.JPG","listPrice":24.99,"name":"Amazing T-Shirt","variants":[{"releaseDate":null,"itemClass":"WEAR-U-SHR","listPrice":24.99,"qtyShip":0,"lastUpdated":"2016-01-08T23:30:00Z","shippingCost":5.26,"salePrice":null,"shipDate":"2016-01-18T05:00:00Z","qtyAvailable":1299,"sku":"AAA001SLBK","variantNames":[{"Size":"Large"}]},{"releaseDate":null,"itemClass":"WEAR-U-SHR","listPrice":24.99,"qtyShip":0,"lastUpdated":"2016-01-08T23:30:00Z","shippingCost":5.26,"salePrice":null,"shipDate":"2016-01-18T05:00:00Z","qtyAvailable":1299,"sku":"AAA001SZBK","variantNames":[{"Size":"XX-Large"}]}],"storeProductUrl":"example.shop.musictoday.com/Product.aspx?pc=AAA001","variantLabels":["Size"]},{"imageUrlSmall":"http://static.musictoday.com/store/bands/12/product_small/AAA002.JPG","imageUrlLarge":"http://static.musictoday.com/store/bands/12/product_large/AAA002.JPG","lastUpdated":"2016-01-27T20:05:00Z","imageUrl50x50":"http://static.musictoday.com/store/bands/12/product_50/AAA002.JPG","lang":{"en":{"textDesc":"Merry Jane Culture T-Shirt - Black\n\nPlease note: This item is available for pre-order.\nYour entire order will ship in mid-January 2016.\n \n ","longDesc":"","shortDesc":"Merry Jane Culture T-Shirt - Black\n<br /><br />\n<b>Please note: This item is available for pre-order.</b><br />\nYour entire order will ship in mid-January 2016.\n<br /><br />"}},"id":"AAA002","categoryName":"T-Shirts","imageUrlMedium":"http://static.musictoday.com/store/bands/12/product_medium/AAA002.JPG","imageUrl205x205":"http://static.musictoday.com/store/bands/12/product_205/AAA002.JPG","listPrice":24.99,"name":"Amazing T-Shirt","variants":[{"releaseDate":null,"itemClass":"WEAR-U-SHR","listPrice":24.99,"qtyShip":0,"lastUpdated":"2016-01-08T23:30:00Z","shippingCost":5.26,"salePrice":null,"shipDate":"2016-01-18T05:00:00Z","qtyAvailable":1299,"sku":"AAA002SLBK","variantNames":[{"Size":"Large"}]},{"releaseDate":null,"itemClass":"WEAR-U-SHR","listPrice":24.99,"qtyShip":0,"lastUpdated":"2016-01-08T23:30:00Z","shippingCost":5.26,"salePrice":null,"shipDate":"2016-01-18T05:00:00Z","qtyAvailable":1299,"sku":"AAA002SZBK","variantNames":[{"Size":"XX-Large"}]}],"storeProductUrl":"example.shop.musictoday.com/Product.aspx?pc=AAA002","variantLabels":["Size"]},{"imageUrlSmall":"http://static.musictoday.com/store/bands/12/product_small/AAA003.JPG","imageUrlLarge":"http://static.musictoday.com/store/bands/12/product_large/AAA003.JPG","lastUpdated":"2016-01-27T20:05:00Z","imageUrl50x50":"http://static.musictoday.com/store/bands/12/product_50/AAA003.JPG","lang":{"en":{"textDesc":"Merry Jane Culture T-Shirt - Black\n\nPlease note: This item is available for pre-order.\nYour entire order will ship in mid-January 2016.\n \n ","longDesc":"","shortDesc":"Merry Jane Culture T-Shirt - Black\n<br /><br />\n<b>Please note: This item is available for pre-order.</b><br />\nYour entire order will ship in mid-January 2016.\n<br /><br />"}},"id":"AAA003","categoryName":"T-Shirts","imageUrlMedium":"http://static.musictoday.com/store/bands/12/product_medium/AAA003.JPG","imageUrl205x205":"http://static.musictoday.com/store/bands/12/product_205/AAA003.JPG","listPrice":24.99,"name":"Amazing T-Shirt","variants":[{"releaseDate":null,"itemClass":"WEAR-U-SHR","listPrice":24.99,"qtyShip":0,"lastUpdated":"2016-01-08T23:30:00Z","shippingCost":5.26,"salePrice":null,"shipDate":"2016-01-18T05:00:00Z","qtyAvailable":1299,"sku":"AAA003SLBK","variantNames":[{"Size":"Large"}]},{"releaseDate":null,"itemClass":"WEAR-U-SHR","listPrice":24.99,"qtyShip":0,"lastUpdated":"2016-01-08T23:30:00Z","shippingCost":5.26,"salePrice":null,"shipDate":"2016-01-18T05:00:00Z","qtyAvailable":1299,"sku":"AAA003SZBK","variantNames":[{"Size":"XX-Large"}]}],"storeProductUrl":"example.shop.musictoday.com/Product.aspx?pc=AAA001","variantLabels":["Size"]}],"storeId":12}'
+    http_version:
+  recorded_at: Thu, 28 Jan 2016 14:19:50 GMT
+recorded_with: VCR 3.0.1
