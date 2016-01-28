@@ -13,7 +13,7 @@ module MusicTodayApiWrapper
     yield(configuration)
   end
 
-  def self.products(per_page = nil, page_number = nil)
+  def self.products(per_page = 1000, page_number = nil)
     product_services = Services::ProductServices.new
     product_services.all_products(per_page, page_number)
   end

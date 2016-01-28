@@ -17,7 +17,7 @@ module MusicTodayApiWrapper
       @common_response = MusicTodayApiWrapper::RestClients::CommonResponse.new
     end
 
-    def all_products(per_page = nil, page_number = nil)
+    def all_products(per_page = 1000, page_number = nil)
       @common_response.work do
         options = {}
         options[:size] = per_page if per_page

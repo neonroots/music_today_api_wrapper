@@ -10,7 +10,7 @@ module MusicTodayApiWrapper
         @rest_client = MusicTodayApiWrapper::RestClient.new
       end
 
-      def all_products(per_page = nil, page_number = nil)
+      def all_products(per_page = 1000, page_number = nil)
         results = @rest_client.all_products(per_page, page_number)
         return results unless results.success?
 
