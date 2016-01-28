@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'bundler', '>= 1.10.6'
   s.add_dependency 'rake', '>= 10.4.2'
   s.add_dependency 'json', '~> 1.8', '>= 1.8.3'
+  s.add_dependency 'credit_card_validator', '~> 1.2'
 end
