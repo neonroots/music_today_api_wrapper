@@ -3,6 +3,11 @@ require './lib/music_today_api_wrapper'
 require './lib/resources/address'
 require './lib/resources/purchase/item'
 require './lib/resources/product'
+require './lib/resources/checkout/order'
+require './lib/resources/checkout/billing/customer'
+require './lib/resources/checkout/billing/payment'
+require './lib/resources/checkout/destination'
+require './lib/resources/purchase/invoice'
 
 describe 'test the entire gem' do
   it 'should return the products list' do
@@ -166,5 +171,74 @@ describe 'test the entire gem' do
       expect(response.data[:session].class).to eq(MusicTodayApiWrapper::Resources::Checkout::Session)
       expect(response.data[:session].id).to eq('FAKE-SESSION-NUMBER')
     end
+  end
+end
+
+describe 'test purchase action' do
+  before do
+    address =
+      MusicTodayApiWrapper::Resources::Address.new('2209 Elk Rd Little',
+                                                   'AZ',
+                                                   'Tucson',
+                                                   '85704')
+    destination =
+      MusicTodayApiWrapper::Resources::Checkout::Destination.new(address, 'CHEAPEST', 250)
+    payment =
+      MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new('4716938445825308',
+                                                                      'fake name on card',
+                                                                      2500, 2016, 2)
+    customer =
+      MusicTodayApiWrapper::Resources::Checkout::Billing::Customer.new('fake_name',
+                                                                       'fake_surname',
+                                                                       'Nye Regional Medical Center',
+                                                                       'Chicago',
+                                                                       'IL',
+                                                                       '22699',
+                                                                       '12-456-7890',
+                                                                       'fake@email.com')
+    variant =
+     MusicTodayApiWrapper::Resources::Variant.new('AAA002SLBK', 24.99, 1)
+    item = MusicTodayApiWrapper::Resources::Purchase::Item.new(variant, 1, nil, nil, 0)
+    order =
+      MusicTodayApiWrapper::Resources::Checkout::Order.new(customer,
+                                                           payment,
+                                                           [destination],
+                                                           [item])
+    VCR.use_cassette 'set_purchase' do
+      @response = MusicTodayApiWrapper.purchase(order)
+      @invoice = @response.data[:invoice]
+    end
+  end
+
+  it 'should return a common_response' do
+    expect(@response.class).to eq(MusicTodayApiWrapper::RestClients::CommonResponse)
+  end
+
+  it 'should return a success common response' do
+    expect(@response.success?).to eq(true)
+  end
+
+  it 'should return a an invoice' do
+    expect(@invoice.class).to eq(MusicTodayApiWrapper::Resources::Purchase::Invoice)
+  end
+
+  it 'should return the shipping costs' do
+    expect(@invoice.shipping).to eq(3.5)
+  end
+
+  it 'should return the sub total' do
+    expect(@invoice.sub_total).to eq(14.95)
+  end
+
+  it 'should return the taxes' do
+    expect(@invoice.taxes).to eq(0.98)
+  end
+
+  it 'should return the final total' do
+    expect(@invoice.total).to eq(19.43)
+  end
+
+  it 'should return the right id' do
+    expect(@invoice.id).to eq('123456789')
   end
 end

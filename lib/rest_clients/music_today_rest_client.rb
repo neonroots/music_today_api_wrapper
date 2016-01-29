@@ -52,6 +52,14 @@ module MusicTodayApiWrapper
       end
     end
 
+    def purchase(params)
+      @common_response.work do
+        url = "#{@url}/order/submit"
+        @common_response.data[:order] =
+          post(url, {}, params)['orders'].first
+      end
+    end
+
     private
 
     def get(url, options = {})

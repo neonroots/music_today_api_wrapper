@@ -37,7 +37,7 @@ module MusicTodayApiWrapper
             validateOnly: false,
             taxPrepaid: false,
             billing: { customer: @customer.as_hash,
-                       payment: @payment.as_hash },
+                       payments: [@payment.as_hash] },
             currency: 'USD',
             destinations: @destinations.map(&:as_hash),
             lineItems: @items.map(&:as_hash),
