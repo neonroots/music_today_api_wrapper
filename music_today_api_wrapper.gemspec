@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'vcr', '~> 3.0'
   s.add_development_dependency 'webmock', '~> 1.22'
 
-  s.add_dependency 'bundler', '>= 1.10.6'
-  s.add_dependency 'rake', '>= 10.4.2'
+  s.add_dependency 'bundler', '~> 1.10', '>= 1.10.6'
+  s.add_dependency 'rake', '~> 10.4', '>= 10.4.2'
   s.add_dependency 'json', '~> 1.8', '>= 1.8.3'
   s.add_dependency 'credit_card_validator', '~> 1.2'
 end
