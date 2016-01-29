@@ -2,6 +2,7 @@ require 'rest_clients/music_today_rest_client'
 require 'rest_clients/common_response'
 require 'resources/purchase/item'
 require 'resources/checkout/session'
+require 'resources/purchase/invoice'
 
 module MusicTodayApiWrapper
   module Services
@@ -32,6 +33,16 @@ module MusicTodayApiWrapper
           return response unless response.success?
           @common_response.data[:session] =
             Resources::Checkout::Session.from_hash(response.data[:session])
+        end
+      end
+
+      def purchase(order)
+        @common_response.work do
+          orders = [order.as_hash]
+          response = @rest_client.purchase(orders: orders)
+          return response unless response.success?
+          @common_response.data[:invoice] =
+            Resources::Purchase::Invoice.from_hash(response.data[:order])
         end
       end
     end

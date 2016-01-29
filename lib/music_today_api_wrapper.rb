@@ -32,4 +32,9 @@ module MusicTodayApiWrapper
     checkout_services = Services::CheckoutServices.new
     checkout_services.checkout(address, items)
   end
+
+  def self.purchase(order)
+    checkout_services = Services::CheckoutServices.new
+    checkout_services.purchase(order)
+  end
 end

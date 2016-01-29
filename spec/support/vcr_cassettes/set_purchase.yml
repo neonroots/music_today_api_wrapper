@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://stores.staging.musictoday.com/api/0.4/order/submit?apikey=example_api_key&apiuser=example
+    body:
+      encoding: UTF-8
+      string: '{"orders":[{"storeId":12,"channel":"fake_channel","orderDate":"2016-01-29T15:14:11-03:00","clientOrderId":"EXA1454091251","clientCustomerId":"EXA1454091251","sendConfEmail":true,"sendDigitalConfEmail":true,"applyFraudCheck":true,"validateOnly":false,"taxPrepaid":false,"billing":{"customer":{"firstName":"fake_name","lastName":"fake_surname","street":"Nye
+        Regional Medical Center","street2":"","city":"Chicago","state":"IL","postalCode":"22699","country":"US","phone":"12-456-7890","email":"fake@email.com"},"payments":[{"type":"VISA","accountNumber":"4716938445825308","expYear":2016,"expMonth":2,"nameOnCard":"fake
+        name on card","amount":2500.0}]},"currency":"USD","destinations":[{"requestedShippingOption":"CHEAPEST","shippingCost":250.0,"shipToBillTo":false,"address":{"street":"2209
+        Elk Rd Little","street2":"","state":"AZ","city":"Tucson","postalCode":"85704","country":"US"}}],"lineItems":[{"sku":"AAA002SLBK","qty":1,"quantity":1,"price":24.99,"destIndex":0}],"promotions":[]}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - stores.staging.musictoday.com
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 29 Jan 2016 18:14:11 GMT
+      Server:
+      - Wildfly 8
+      X-Powered-By:
+      - Undertow 1
+      Content-Type:
+      - application/json;charset=UTF-8
+      X-Wildfly-Host:
+      - 02q
+      Set-Cookie:
+      - Coyote-2-1603010a=4104010a:0; path=/
+      - JSESSIONID=8FZyp98OKRp09FMD52RGbLTp.sms-mgr02q; path=/store-api-0.4
+      P3p:
+      - CP="NOI ADM DEV PSAi COM NAV OUR OTR STP IND DEM"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      X-Apache-Host:
+      - 05p
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '74'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":{},"orders":[{"destinations":[{"shippingOption":"STANDARD","deliveryDate":null,"totalRate":0,"shippingMethodName":"Standard (5-9 business days)"}],"billing":{"totals":{"total":19.43,"shipping":3.5,"itemTax":0.8,"shippingTax":0.18,"totalTax":0.98,"subtotal":14.95}},"clientOrderId":"MJ_TEST_ORDER_XXX","orderNumber":"123456789","promotions":[],"lineItems":[{"isPreorder":false,"isDownload":false,"certificateGiftMessage":"","certificateDeliveryDate":"2000-01-01T18:13:00","qty":1,"downloadUrl":null,"certificateToName":"","qtyAvailable":0,"sku":"AAA001","preorderShipDate":null,"certificateToEmail":"","price":24.99,"certificateFromName":"","comboSku":"","destIndex":0}]}]}'
+    http_version:
+  recorded_at: Fri, 29 Jan 2016 18:14:11 GMT
+recorded_with: VCR 3.0.1
