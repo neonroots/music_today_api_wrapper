@@ -6,7 +6,7 @@ describe 'check Customer hash structure' do
     customer =
     MusicTodayApiWrapper::Resources::Checkout::Billing::Customer.new('fake_name',
                                                                      'fake_surname',
-                                                                     'Nye Regional Medical Center -, NV',
+                                                                     'Nye Regional Medical Center',
                                                                      'Chicago',
                                                                      'IL',
                                                                      '22699',
@@ -32,7 +32,7 @@ describe 'check Customer hash structure' do
   end
 
   it 'should return a hash with the right street' do
-    expect(@hash_customer[:street]).to eq('Nye Regional Medical Center -, NV')
+    expect(@hash_customer[:street]).to eq('Nye Regional Medical Center')
   end
 
   it 'should return a hash with the right city' do

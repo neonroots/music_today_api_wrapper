@@ -13,8 +13,8 @@ module MusicTodayApiWrapper
                         :name,
                         :amount
 
-          def initialize(card_number = '4242424242424242', name = '',
-            amount = 0.0, expiration_year = 2016, expiration_month = 1)
+          def initialize(card_number, name, amount, expiration_year,
+            expiration_month)
             @card_number = card_number
             @expiration_year = expiration_year.to_i
             @expiration_month = expiration_month.to_i

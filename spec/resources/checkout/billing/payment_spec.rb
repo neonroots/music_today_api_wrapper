@@ -1,14 +1,24 @@
 require 'spec_helper'
 require './lib/resources/checkout/billing/payment'
 
+def get_payment(card_type)
+  card_number = case card_type
+  when 'VISA'
+    '4716938445825308'
+  when 'MASTERCARD'
+    '5540326541016361'
+  when 'AMEX'
+    '374169327978327'
+  when 'DISCOVER'
+    '6011925167693169'
+  end
+  MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new(card_number,
+    'fake name on card', 2500, 2016, 2)
+end
+
 describe 'check Payment hash structure' do
   before do
-    payment =
-    MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new('4716938445825308',
-                                                                    'fake name on card',
-                                                                    2500,
-                                                                    2016,
-                                                                    2)
+    payment = get_payment('VISA')
     @hash_payment = payment.as_hash
   end
 
@@ -39,45 +49,25 @@ end
 
 describe 'Check credit card type generation' do
   it 'should be a VISA' do
-    payment =
-    MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new('4716938445825308',
-                                                                    'fake name on card',
-                                                                    2500,
-                                                                    2016,
-                                                                    2)
+    payment = get_payment('VISA')
     hash_payment = payment.as_hash
     expect(hash_payment[:type]).to eq('VISA')
   end
 
   it 'should be a MasterCard' do
-    payment =
-    MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new('5540326541016361',
-                                                                    'fake name on card',
-                                                                    2500,
-                                                                    2016,
-                                                                    2)
+    payment = get_payment('MASTERCARD')
     hash_payment = payment.as_hash
     expect(hash_payment[:type]).to eq('MC')
   end
 
   it 'should be an AmericanExpress' do
-    payment =
-    MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new('374169327978327',
-                                                                    'fake name on card',
-                                                                    2500,
-                                                                    2016,
-                                                                    2)
+    payment = get_payment('AMEX')
     hash_payment = payment.as_hash
     expect(hash_payment[:type]).to eq('AMEX')
   end
 
   it 'should be an Discover' do
-    payment =
-    MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new('6011925167693169',
-                                                                    'fake name on card',
-                                                                    2500,
-                                                                    2016,
-                                                                    2)
+    payment = get_payment('DISCOVER')
     hash_payment = payment.as_hash
     expect(hash_payment[:type]).to eq('DISCOVER')
   end

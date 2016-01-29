@@ -8,11 +8,12 @@ module MusicTodayApiWrapper
         attr_accessor :variant, :quantity
 
         def initialize(variant = Variant.new, quantity = 1, tax = nil,
-          total = nil)
+          total = nil, destination_id = nil)
           @variant = variant
           @quantity = quantity
           @tax = tax
           @total = total
+          @destination_id = destination_id
         end
 
         def as_hash
@@ -21,7 +22,8 @@ module MusicTodayApiWrapper
             quantity: @quantity,
             price: @variant.price,
             tax: @tax,
-            total: @total }.compact
+            total: @total,
+            destIndex: @destination_id }.compact
         end
 
         def self.from_hash(item_hash)

@@ -8,10 +8,8 @@ module MusicTodayApiWrapper
   module Resources
     module Checkout
       class Order
-        def initialize(customer =
-          MusicTodayApiWrapper::Resources::Checkout::Billing::Customer.new,
-          payment =
-          MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new)
+        def initialize(customer, payment, destinations = [], items = [],
+          promotions = [])
           config = MusicTodayApiWrapper::Configuration.new
 
           @catalog = config.catalog.to_i
@@ -19,8 +17,12 @@ module MusicTodayApiWrapper
           @prefix = config.order_prefix
           @customer = customer
           @payment = payment
+          @destinations = destinations
+          @items = items
+          @promotions = promotions
         end
 
+        # rubocop:disable MethodLength
         def as_hash
           dynamic_id = @prefix + Time.now.to_i.to_s
 
@@ -36,7 +38,10 @@ module MusicTodayApiWrapper
             taxPrepaid: false,
             billing: { customer: @customer.as_hash,
                        payment: @payment.as_hash },
-            currency: 'USD' }.compact
+            currency: 'USD',
+            destinations: @destinations.map(&:as_hash),
+            lineItems: @items.map(&:as_hash),
+            promotions: @promotions.map(&:as_hash) }.compact
         end
       end
     end
