@@ -32,6 +32,7 @@ LongParameterList:
   exclude:
     - 'MusicTodayApiWrapper::Resources::Product#initialize'
     - 'MusicTodayApiWrapper::Resources::Address#initialize'
+    - 'MusicTodayApiWrapper::Resources::Checkout::Billing::Customer#initialize'
   max_params: 3
   overrides:
     initialize:

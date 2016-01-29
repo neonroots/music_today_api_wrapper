@@ -3,6 +3,7 @@ PATH
   specs:
     music_today_api_wrapper (28.01.16.01)
       bundler (>= 1.10.6)
+      credit_card_validator (~> 1.2)
       json (~> 1.8, >= 1.8.3)
       rake (>= 10.4.2)
 
@@ -21,6 +22,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    base_app (1.0.5)
     byebug (8.2.1)
     codeclimate-engine-rb (0.1.0)
       virtus (~> 1.0)
@@ -31,6 +33,8 @@ GEM
       equalizer (~> 0.0.9)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    credit_card_validator (1.2.0)
+      base_app (>= 1.0.5)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
@@ -47,7 +51,7 @@ GEM
     private_attr (1.1.0)
     procto (0.0.2)
     rainbow (2.0.0)
-    rake (10.4.2)
+    rake (10.5.0)
     reek (3.7.1)
       codeclimate-engine-rb (~> 0.1.0)
       parser (~> 2.2, >= 2.2.2.5)
