@@ -3,6 +3,7 @@ require 'resources/hash'
 require 'date'
 require 'resources/checkout/billing/customer'
 require 'resources/checkout/billing/payment'
+require 'resources/checkout/destination'
 
 module MusicTodayApiWrapper
   module Resources
