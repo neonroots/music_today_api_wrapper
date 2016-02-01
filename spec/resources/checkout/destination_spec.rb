@@ -4,13 +4,17 @@ require './lib/resources/checkout/destination'
 
 describe 'check Destination hash structure' do
   before do
-    address =
-      MusicTodayApiWrapper::Resources::Address.new('2209 Elk Rd Little',
-                                                   'AZ',
-                                                   'Tucson',
-                                                   '85704')
+    customer =
+    MusicTodayApiWrapper::Resources::Checkout::Billing::Customer.new('fake_name',
+                                                                     'fake_surname',
+                                                                     'Nye Regional Medical Center',
+                                                                     'Chicago',
+                                                                     'IL',
+                                                                     '22699',
+                                                                     '12-456-7890',
+                                                                     'fake@email.com')
     destination =
-      MusicTodayApiWrapper::Resources::Checkout::Destination.new(address, 'CHEAPEST', 250)
+      MusicTodayApiWrapper::Resources::Checkout::Destination.new(customer, 'CHEAPEST', 250)
     @hash_destination = destination.as_hash
   end
 
@@ -23,18 +27,18 @@ describe 'check Destination hash structure' do
   end
 
   it 'should return the right shipping address street' do
-    expect(@hash_destination[:address][:street]).to eq('2209 Elk Rd Little')
+    expect(@hash_destination[:address][:street]).to eq('Nye Regional Medical Center')
   end
 
   it 'should return the right shipping address state' do
-    expect(@hash_destination[:address][:state]).to eq('AZ')
+    expect(@hash_destination[:address][:state]).to eq('IL')
   end
 
   it 'should return the right shipping address city' do
-    expect(@hash_destination[:address][:city]).to eq('Tucson')
+    expect(@hash_destination[:address][:city]).to eq('Chicago')
   end
 
   it 'should return the right shipping address city' do
-    expect(@hash_destination[:address][:postalCode]).to eq('85704')
+    expect(@hash_destination[:address][:postalCode]).to eq('22699')
   end
 end

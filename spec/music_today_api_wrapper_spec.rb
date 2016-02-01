@@ -176,17 +176,6 @@ end
 
 describe 'test purchase action' do
   before do
-    address =
-      MusicTodayApiWrapper::Resources::Address.new('2209 Elk Rd Little',
-                                                   'AZ',
-                                                   'Tucson',
-                                                   '85704')
-    destination =
-      MusicTodayApiWrapper::Resources::Checkout::Destination.new(address, 'CHEAPEST', 250)
-    payment =
-      MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new('4716938445825308',
-                                                                      'fake name on card',
-                                                                      2500, 2016, 2)
     customer =
       MusicTodayApiWrapper::Resources::Checkout::Billing::Customer.new('fake_name',
                                                                        'fake_surname',
@@ -196,6 +185,12 @@ describe 'test purchase action' do
                                                                        '22699',
                                                                        '12-456-7890',
                                                                        'fake@email.com')
+    destination =
+      MusicTodayApiWrapper::Resources::Checkout::Destination.new(customer, 'CHEAPEST', 250)
+    payment =
+      MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new('4716938445825308',
+                                                                      'fake name on card',
+                                                                      2500, 2016, 2)
     variant =
      MusicTodayApiWrapper::Resources::Variant.new('AAA002SLBK', 24.99, 1)
     item = MusicTodayApiWrapper::Resources::Purchase::Item.new(variant, 1, nil, nil, 0)
