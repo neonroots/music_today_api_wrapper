@@ -2,6 +2,7 @@ require 'rest_clients/music_today_rest_client'
 require 'rest_clients/common_response'
 require 'resources/purchase/item'
 require 'resources/checkout/session'
+require 'resources/checkout/order'
 require 'resources/purchase/invoice'
 
 module MusicTodayApiWrapper
