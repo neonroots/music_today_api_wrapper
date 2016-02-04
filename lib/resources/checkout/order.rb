@@ -9,6 +9,8 @@ module MusicTodayApiWrapper
   module Resources
     module Checkout
       class Order
+        attr_accessor :customer, :destinations, :items
+
         def initialize(customer, payment, destinations = [], items = [],
           promotions = [])
           config = MusicTodayApiWrapper::Configuration.new

@@ -33,8 +33,9 @@ module MusicTodayApiWrapper
     checkout_services.checkout(address, items)
   end
 
-  def self.purchase(order)
+  def self.purchase(order, check_price = true)
     checkout_services = Services::CheckoutServices.new
-    checkout_services.purchase(order)
+    return checkout_services.only_purchase(order) unless check_price
+    checkout_services.confirm_and_purchase(order) if check_price
   end
 end

@@ -3,7 +3,8 @@ Attribute:
   exclude: []
 BooleanParameter:
   enabled: true
-  exclude: []
+  exclude:
+    - 'MusicTodayApiWrapper#self.purchase'
 ClassVariable:
   enabled: false
   exclude: []
@@ -11,6 +12,7 @@ ControlParameter:
   enabled: true
   exclude:
     - 'Product#initialize'
+    - 'MusicTodayApiWrapper#self.purchase'
 DataClump:
   enabled: true
   exclude: []
@@ -23,7 +25,8 @@ DuplicateMethodCall:
   allow_calls: []
 FeatureEnvy:
   enabled: true
-  exclude: []
+  exclude:
+    - 'MusicTodayApiWrapper::Services::CheckoutServices#confirm_and_purchase'
 IrresponsibleModule:
   enabled: false
   exclude: []

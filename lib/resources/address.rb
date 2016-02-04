@@ -43,6 +43,18 @@ module MusicTodayApiWrapper
           country: @country,
           shippingOptionType: @selected_shipping }.compact
       end
+
+      def self.from_destinations(destinations)
+        destinations.map do |destination|
+          customer = destination.customer
+          address = self.new(customer.street,
+                             customer.state,
+                             customer.city,
+                             customer.zip_code)
+          address.selected_shipping = destination.shipping_option
+          address
+        end
+      end
     end
   end
 end
