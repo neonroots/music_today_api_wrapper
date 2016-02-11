@@ -75,7 +75,10 @@ module MusicTodayApiWrapper
         request = Net::HTTP::Post.new(uri)
         request.body = body.to_json
         request.content_type = 'application/json'
-        Net::HTTP.start(uri.hostname) { |http| http.request(request) }
+        use_ssl = (uri.scheme == 'https')
+        Net::HTTP.start(uri.hostname, use_ssl: use_ssl) do |http|
+          http.request(request)
+        end
       end
     end
 
