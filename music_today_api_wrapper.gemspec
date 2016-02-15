@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'music_today_api_wrapper'
-  s.version     = '29.03'
-  s.date        = '2016-02-11'
+  s.version     = '29.04'
+  s.date        = '2016-02-15'
   s.summary     = 'Gem to expose music today api endpoints.'
   s.description = 'Gem to expose music today api endpoints.'
   s.authors     = ['Pablo Gonzaga', 'Oscar Siniscalchi']

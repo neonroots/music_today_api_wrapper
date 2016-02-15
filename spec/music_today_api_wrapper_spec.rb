@@ -301,3 +301,71 @@ describe 'test purchase action and confirm prices' do
     expect(@invoice.id).to eq('123456789')
   end
 end
+
+describe 'test purchase errors' do
+  before do
+    customer =
+      MusicTodayApiWrapper::Resources::Checkout::Billing::Customer.new('fake_name',
+                                                                       'fake_surname',
+                                                                       'Nye Regional Medical Center',
+                                                                       'Chicago',
+                                                                       'IL',
+                                                                       '22699',
+                                                                       '12-456-7890',
+                                                                       'fake@email.com')
+    destination =
+      MusicTodayApiWrapper::Resources::Checkout::Destination.new(customer, 'CHEAPEST', 250)
+    payment =
+      MusicTodayApiWrapper::Resources::Checkout::Billing::Payment.new('4716938445825308',
+                                                                      'fake name on card',
+                                                                      2500, 2016, 2)
+    variant =
+     MusicTodayApiWrapper::Resources::Variant.new('AAA002SLBK', 0.99, 1)
+    item = MusicTodayApiWrapper::Resources::Purchase::Item.new(variant, 1, nil, nil, 0)
+    @order =
+      MusicTodayApiWrapper::Resources::Checkout::Order.new(customer,
+                                                           payment,
+                                                           [destination],
+                                                           [item])
+  end
+
+  context 'for fake address' do
+    before do
+      VCR.use_cassette 'set_purchase_address_length_error' do
+        @response = MusicTodayApiWrapper.purchase(@order)
+      end
+    end
+
+    it 'should return a common_response' do
+      expect(@response.class).to eq(MusicTodayApiWrapper::RestClients::CommonResponse)
+    end
+
+    it 'should return a common_response with errors' do
+      expect(@response.success?).to eq(false)
+    end
+
+    it 'should return a common_response with address error' do
+      expect(@response.errors[0]).to eq({ type: :address_error })
+    end
+  end
+
+  context 'for fake card info' do
+    before do
+      VCR.use_cassette 'set_purchase_card_error' do
+        @response = MusicTodayApiWrapper.purchase(@order)
+      end
+    end
+
+    it 'should return a common_response' do
+      expect(@response.class).to eq(MusicTodayApiWrapper::RestClients::CommonResponse)
+    end
+
+    it 'should return a common_response with errors' do
+      expect(@response.success?).to eq(false)
+    end
+
+    it 'should return a common_response with address error' do
+      expect(@response.errors[0]).to eq({ type: :credit_card_error })
+    end
+  end
+end

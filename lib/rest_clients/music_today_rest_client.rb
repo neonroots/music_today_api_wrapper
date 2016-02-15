@@ -55,8 +55,11 @@ module MusicTodayApiWrapper
     def purchase(params)
       @common_response.work do
         url = "#{@url}/order/submit"
+        response = post(url, {}, params)
+        errors = response['errors']
         @common_response.data[:order] =
-          post(url, {}, params)['orders'].first
+          response['orders'].first if errors.empty?
+        purchase_errors(errors[0]['errorDetails']) if errors.any?
       end
     end
 
@@ -87,6 +90,17 @@ module MusicTodayApiWrapper
       uri.query = URI.encode_www_form(options)
       response = yield
       JSON.parse(response.body)
+    end
+
+    def purchase_errors(error_details)
+      errors = @common_response.errors
+      if error_details['billingErrors'].any? ||
+         error_details['destinationErrors'].any?
+        errors.push(type: :address_error)
+      end
+
+      return unless error_details['paymentErrors'].any?
+      errors.push(type: :credit_card_error)
     end
   end
 end
