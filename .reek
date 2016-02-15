@@ -27,6 +27,7 @@ FeatureEnvy:
   enabled: true
   exclude:
     - 'MusicTodayApiWrapper::Services::CheckoutServices#confirm_and_purchase'
+    - 'MusicTodayApiWrapper::RestClient#purchase_errors'
 IrresponsibleModule:
   enabled: false
   exclude: []
@@ -76,6 +77,7 @@ TooManyStatements:
   - MusicTodayApiWrapper::RestClient#all_products
   - MusicTodayApiWrapper::Resources::Variant#self.variant_names
   - MusicTodayApiWrapper::Services::CheckoutServices#checkout
+  - MusicTodayApiWrapper::RestClient#purchase
   max_statements: 5
 UncommunicativeMethodName:
   enabled: true

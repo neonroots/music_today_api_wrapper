@@ -47,10 +47,10 @@ module MusicTodayApiWrapper
       def self.from_destinations(destinations)
         destinations.map do |destination|
           customer = destination.customer
-          address = self.new(customer.street,
-                             customer.state,
-                             customer.city,
-                             customer.zip_code)
+          address = new(customer.street,
+                        customer.state,
+                        customer.city,
+                        customer.zip_code)
           address.selected_shipping = destination.shipping_option
           address
         end

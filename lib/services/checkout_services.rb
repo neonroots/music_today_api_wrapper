@@ -13,14 +13,11 @@ module MusicTodayApiWrapper
         @rest_client = RestClient.new
       end
 
-      # rubocop:disable MethodLength
       # rubocop:disable AbcSize
       def checkout(address, items)
         items_hash = items.map(&:as_hash)
         address_hash =
-          address
-          .as_hash
-          .merge(id: 1, items: items_hash)
+          address.as_hash.merge(id: 1, items: items_hash)
 
         @common_response.work do
           params = checkout_params(address_hash)
@@ -29,7 +26,8 @@ module MusicTodayApiWrapper
           session = response.data[:session]
           response_data = @common_response.data
 
-          response_data[:session] = Resources::Checkout::Session.from_hash(session)
+          response_data[:session] =
+            Resources::Checkout::Session.from_hash(session)
           response_data[:items] = session['items'].map do |item|
             Resources::Purchase::Item.from_hash(item)
           end
@@ -58,8 +56,13 @@ module MusicTodayApiWrapper
       def purchase
         @common_response.work do
           response = yield
-          @common_response.data[:invoice] =
-            Resources::Purchase::Invoice.from_hash(response.data[:order])
+          if response.success?
+            @common_response.data[:invoice] =
+              Resources::Purchase::Invoice.from_hash(response.data[:order])
+          else
+            @common_response.errors = response.errors
+            @common_response.data = {}
+          end
         end
       end
 
