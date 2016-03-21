@@ -8,6 +8,7 @@ module MusicTodayApiWrapper
           attr_accessor :name,
                         :lastname,
                         :street,
+                        :street_2,
                         :city,
                         :state,
                         :zip_code,
@@ -16,11 +17,13 @@ module MusicTodayApiWrapper
                         :country
 
           # rubocop:disable ParameterLists
-          def initialize(name = '', lastname = '', street = '', city = '',
-            state = '', zip_code = '', phone = '', email = '', country = 'US')
+          def initialize(name = '', lastname = '', street = '', street_2 = '',
+            city = '', state = '', zip_code = '', phone = '', email = '',
+            country = 'US')
             @name = name
             @lastname = lastname
             @street = street
+            @street_2 = street_2
             @city = city
             @state = state
             @zip_code = zip_code
@@ -33,7 +36,7 @@ module MusicTodayApiWrapper
             { firstName: @name,
               lastName: @lastname,
               street: @street,
-              street2: '',
+              street2: @street_2,
               city: @city,
               state: @state,
               postalCode: @zip_code,
